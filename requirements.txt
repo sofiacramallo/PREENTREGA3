@@ -1,0 +1,10 @@
+asgiref==3.8.1
+distlib==0.3.8
+Django==5.0.6
+filelock==3.14.0
+paquete1 @ file:///C:/Users/ramal/Desktop/segunda_preentrega/dist/paquete1-1.0.tar.gz#sha256=d3e895d47633371431fc756d17264ae95712bdb3e62a82ef00932a3c06a7d8da
+platformdirs==4.2.2
+setuptools==69.5.1
+sqlparse==0.5.0
+tzdata==2024.1
+virtualenv==20.26.2
