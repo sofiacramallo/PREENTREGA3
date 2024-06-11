@@ -4,9 +4,10 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, Context, loader
 import random
+from inicio.models import Curso, Profesor, Entregable, Estudiante
 # Create your views here.
 def inicio(request):
-    return HttpResponse("vista inicio")
+    return render(request, 'inicio/index.html')
 def template1(request, nombre, apellido):
     fecha = datetime.now()
     return HttpResponse(f"<h1>Mi template </h1>-- Fecha: {fecha} -- Buenas {nombre} {apellido}")
@@ -39,14 +40,16 @@ def probando(request):
     lista= list(range(500))
     numeros= random.choices(lista, k=50)
     return render(request, 'probando_if_for.html', {'numeros': numeros})
-#def curso(self):
-#    curso= Curso(nombre="Desarrollo Web", camada= "19881")
-#    curso.save()
-#    documentoDeTexto= f"Curso: {curso.nombre} Camada: {curso.camada}"
- #  return HttpResponse(documentoDeTexto)
-#def profesores(request):
- #   return HttpResponse("vista profesores")
-#def estudiantes(request):
- #   return HttpResponse("vista estudiantes")
-#def entregables(request):
- #   return HttpResponse("vista entregables")
+def curso(self):
+    curso= Curso(nombre="Desarrollo Web", camada= "19881")
+    curso.save()
+    documentoDeTexto= f"Curso: {curso.nombre} Camada: {curso.camada}"
+    return HttpResponse(documentoDeTexto) #ejemplo de clase 19 el ejemplo con auto es
+#return render(request, 'acá iria el template', {'auto'= auto})
+#como el template lo cree en una carpeta sería por ejemplo 'curso.template/cursoTemplate.html'
+def profesores(request):
+    return HttpResponse("vista profesores")
+def estudiantes(request):
+    return HttpResponse("vista estudiantes")
+def entregables(request):
+    return HttpResponse("vista entregables")

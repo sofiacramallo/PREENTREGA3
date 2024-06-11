@@ -7,4 +7,5 @@ urlpatterns = [
     path('template3/<str:nombre>/<str:apellido>', views.template3),
     path('template4/<str:nombre>/<str:apellido>', views.template4),
     path('probando/', views.probando),
+    path('curso/<str:nombre>/<str:camada>', views.Curso)
 ]
