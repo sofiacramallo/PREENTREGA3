@@ -6,7 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Portfolio Sofía Candela Ramallo</title>
+        <title>
+            {% block title_head %}
+            Portfolio Sofía Candela Ramallo
+            {% endblock title_head %}
+        </title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -28,9 +32,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href={% url "inicio" %}>Portfolio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href={% url "probando" %}>Sobre mí</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contacto</a></li>
                     </ul>
                 </div>
             </div>
@@ -41,7 +45,11 @@
                 <!-- Masthead Avatar Image-->
                 <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">SOFÍA CANDELA RAMALLO</h1>
+                <h1 class="masthead-heading text-uppercase mb-0">
+                    {% block h1_header %}
+                    Bienvenidos a mi inicio!
+                    {% endblock h1_header %}
+                </h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
