@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 #from AppCoder.models import Curso
 from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, Context, loader
 import random
-from inicio.models import Curso, Profesor, Entregable, Estudiante
+from inicio.models import Curso, Profesor, Entregable, Estudiante, Auto
+from inicio.forms import crearAutoFormulario
 # Create your views here.
 def inicio(request):
     return render(request, 'inicio/index.html')
@@ -44,7 +45,25 @@ def curso(self):
     curso= Curso(nombre="Desarrollo Web", camada= "19881")
     curso.save()
     documentoDeTexto= f"Curso: {curso.nombre} Camada: {curso.camada}"
-    return HttpResponse(documentoDeTexto) #ejemplo de clase 19 el ejemplo con auto es
+    return HttpResponse(documentoDeTexto) 
+def crear_auto(request):
+    print(request)
+    print(request.GET)
+    print(request.POST)
+    formulario = crearAutoFormulario()
+    if request.method == 'POST':
+        formulario = crearAutoFormulario(request.POST)
+        if formulario.is_valid():
+            datos= formulario.cleaned_data
+            auto =Auto(marca=datos.get('marca'), modelo=datos.get('modelo'))
+            auto.save()
+            return redirect('autos')
+    return render(request, 'curso.template/cursoTemplate.html', {'formulario': formulario})
+def autos(request):
+    auto= Auto.objects.all()
+    return render(request, 'inicio/autos.html', {'autos': auto})
+#render(request, 'curso.template/cursoTemplate.html', {"auto"=auto})
+#ejemplo de clase 19 el ejemplo con auto es
 #return render(request, 'acá iria el template', {'auto'= auto})
 #como el template lo cree en una carpeta sería por ejemplo 'curso.template/cursoTemplate.html'
 def profesores(request):

@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>alumno</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title_head %}
+crear auto
+{% endblock title_head %}
+{% block h1_header %}
+Creacion de autos
+{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "crear_auto" %} method="POST">
+    {% csrf_token %}
+    <!--<p>
+        Marca:
+        <input type="text", placeholder="Marca", name="marca">
+    </p>
+    <p>
+        Modelo:
+        <input type="text", placeholder="Modelo", name="modelo">
+    </p>-->
+    {{formulario}}
+    <input type="submit" value="Enviar">
+   <!-- <button>Enviar</button>-->
+</form>
+{% endblock main %}
