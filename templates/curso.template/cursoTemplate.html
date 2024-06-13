@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block title_head %}
-crear auto
+Cargar Alumno
 {% endblock title_head %}
 {% block h1_header %}
-Creacion de autos
+Cargar alumno
 {% endblock h1_header %}
 
 {% block main %}
-<form action={% url "crear_auto" %} method="POST">
+<form action={% url "cargar_alumno" %} method="POST">
     {% csrf_token %}
     <!--<p>
         Marca:

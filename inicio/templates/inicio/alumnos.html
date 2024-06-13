@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% block title_head %}
-autos
+Alumnos cargados
 {% endblock title_head %}
 {% block h1_header %}
-listado de autos 
+listado de alumnos
 {% endblock h1_header %}
 
 {% block main %}
 
-{% if autos %}
+{% if alumnos %}
 
 <ul>
-    {% for autos in autos  %}
+    {% for alumno in alumnos  %}
     <li>
-        {{auto.modelo}}
+        {{alumno.nombre}} {{alumno.apellido}}
     </li>
     {% endfor %}
 </ul>

@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, Context, loader
 import random
-from inicio.models import Curso, Profesor, Entregable, Estudiante, Auto
-from inicio.forms import crearAutoFormulario
+from inicio.models import Curso, Profesor, Entregable, Auto, Alumno
+from inicio.forms import cargarAlumnoFormulario
 # Create your views here.
 def inicio(request):
     return render(request, 'inicio/index.html')
@@ -46,29 +46,43 @@ def curso(self):
     curso.save()
     documentoDeTexto= f"Curso: {curso.nombre} Camada: {curso.camada}"
     return HttpResponse(documentoDeTexto) 
-def crear_auto(request):
+#def crear_auto(request):
+#    print(request)
+#    print(request.GET)
+#    print(request.POST)
+#    formulario = crearAutoFormulario()
+#    if request.method == 'POST':
+#        formulario = crearAutoFormulario(request.POST)
+#        if formulario.is_valid():
+#            datos= formulario.cleaned_data
+#            auto =Auto(marca=datos.get('marca'), modelo=datos.get('modelo'))
+#            auto.save()
+#            return redirect('autos')
+#    return render(request, 'curso.template/cursoTemplate.html', {'formulario': formulario})
+def alumnos(request):
+    alumnos= Alumno.objects.all()
+    return render(request, 'inicio/alumnos.html', {'alumnos': alumnos})
+def cargar_alumno(request):
     print(request)
     print(request.GET)
     print(request.POST)
-    formulario = crearAutoFormulario()
+    formulario = cargarAlumnoFormulario()
     if request.method == 'POST':
-        formulario = crearAutoFormulario(request.POST)
+        formulario = cargarAlumnoFormulario(request.POST)
         if formulario.is_valid():
             datos= formulario.cleaned_data
-            auto =Auto(marca=datos.get('marca'), modelo=datos.get('modelo'))
-            auto.save()
-            return redirect('autos')
+            alumno =Alumno(nombre=datos.get('nombre'), apellido=datos.get('apellido'))
+            alumno.save()
+            return redirect('alumnos')
     return render(request, 'curso.template/cursoTemplate.html', {'formulario': formulario})
-def autos(request):
-    auto= Auto.objects.all()
-    return render(request, 'inicio/autos.html', {'autos': auto})
+
 #render(request, 'curso.template/cursoTemplate.html', {"auto"=auto})
 #ejemplo de clase 19 el ejemplo con auto es
 #return render(request, 'acá iria el template', {'auto'= auto})
 #como el template lo cree en una carpeta sería por ejemplo 'curso.template/cursoTemplate.html'
 def profesores(request):
     return HttpResponse("vista profesores")
-def estudiantes(request):
-    return HttpResponse("vista estudiantes")
+#def estudiantes(request):
+#    return HttpResponse("vista estudiantes")
 def entregables(request):
     return HttpResponse("vista entregables")
